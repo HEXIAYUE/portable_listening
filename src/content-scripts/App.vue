@@ -3,16 +3,20 @@
  * @Date: 2023-01-29 16:02:15
  * @Description: Do not edit
  * @LastEditors: HEXIAYUE
- * @LastEditTime: 2023-01-31 00:35:50
+ * @LastEditTime: 2023-01-31 10:40:13
 -->
 <template>
-    <div class="crx-container" :class="{ show: showModal }">
-        <div class="left">
-            <img class="picurl" :src="musicObj.data.picurl" :class="{ 'img-animation': isPlay }" />
+    <div class="hxy-crx-container" :class="{ 'hxy-show': showModal }">
+        <div class="hxy-left">
+            <img
+                class="hxy-picurl"
+                :src="musicObj.data.picurl"
+                :class="{ 'hxy-img-animation': isPlay }"
+            />
         </div>
-        <div class="right">
-            <p class="title">歌名: {{ musicObj.data.name }}</p>
-            <p class="title">作者名: {{ musicObj.data.artistsname }}</p>
+        <div class="hxy-right">
+            <p class="hxy-title">歌名: {{ musicObj.data.name }}</p>
+            <p class="hxy-title">作者名: {{ musicObj.data.artistsname }}</p>
             <audio
                 :src="musicObj.data.url"
                 controls="controls"
@@ -20,11 +24,15 @@
                 id="audioBox"
                 ref="audioPlay"
             ></audio>
-            <div class="word"></div>
-            <div class="palyer">
-                <img class="palyerBtn" src="../assets/img/上一曲.png" @click="previousSong" />
-                <img class="palyerBtn" :src="palyUrlList[Number(isPlay)]" @click="audioPlayfun" />
-                <img class="palyerBtn" src="../assets/img/下一曲.png" @click="nextSong" />
+            <div class="hxy-word"></div>
+            <div class="hxy-palyer">
+                <img class="hxy-palyerBtn" src="../assets/img/上一曲.png" @click="previousSong" />
+                <img
+                    class="hxy-palyerBtn"
+                    :src="palyUrlList[Number(isPlay)]"
+                    @click="audioPlayfun"
+                />
+                <img class="hxy-palyerBtn" src="../assets/img/下一曲.png" @click="nextSong" />
             </div>
         </div>
     </div>
@@ -164,15 +172,13 @@ const fetchRequest = async (option = {}) => {
     return response;
 };
 </script>
-<style>
+<style scoped>
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-</style>
-<style scoped>
-.crx-container {
+.hxy-crx-container {
     width: 400px;
     height: 130px;
     right: 0;
@@ -188,26 +194,26 @@ const fetchRequest = async (option = {}) => {
     display: flex;
     align-items: center;
 }
-.crx-container.show {
+.hxy-crx-container.hxy-show {
     transform: translateX(0);
 }
 
-.left {
+.hxy-left {
     margin: 0 20px;
     position: relative;
 }
-.picurl {
+.hxy-picurl {
     width: 80px;
     height: 80px;
     border-radius: 50%;
     background-color: #eee;
     transition: all 0.4s ease 0s;
 }
-.picurl:hover {
+.hxy-picurl:hover {
     transform: scale(2);
     border-radius: 0;
 }
-.img-animation {
+.hxy-img-animation {
     animation-name: rotateAnimation;
     animation-duration: 5s;
     animation-timing-function: linear;
@@ -224,12 +230,12 @@ const fetchRequest = async (option = {}) => {
     }
 }
 
-.right {
+.hxy-right {
     height: 100%;
     width: 100%;
     padding-top: 5px;
 }
-.title {
+.hxy-title {
     font-size: 16px;
     height: 24px;
     line-height: 24px;
@@ -237,23 +243,23 @@ const fetchRequest = async (option = {}) => {
     color: #fff;
     text-align: center;
 }
-.palyer {
+.hxy-palyer {
     display: flex;
     align-items: center;
     justify-content: center;
     height: 40px;
     width: 100%;
 }
-.palyerBtn {
+.hxy-palyerBtn {
     width: 32px;
     height: 32px;
     margin: 0 20px;
     cursor: pointer;
 }
-.palyerBtn:hover {
+.hxy-palyerBtn:hover {
     opacity: 0.8;
 }
-.word {
+.hxy-word {
     height: calc(100% - 24px - 24px - 40px);
     text-align: center;
 }
