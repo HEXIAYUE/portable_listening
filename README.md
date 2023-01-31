@@ -29,3 +29,5 @@ npm run build
 
 1. 完成基本的播放音频的功能
 2. 展示音频图片，作者名，音频名
+3. 图片展示
+   [![V1.1.md.png](https://img.hxyxyz.top/images/2023/01/31/V1.1.md.png)](https://img.hxyxyz.top/image/jsJeb)
