@@ -17,11 +17,10 @@
 
 # development
 
-npm run dev
+yarn run dev
 
 # production
-
-npm run build
+yarn run build
 
 # 版本介绍
 
