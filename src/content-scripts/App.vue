@@ -3,7 +3,7 @@
  * @Date: 2023-01-29 16:02:15
  * @Description: Do not edit
  * @LastEditors: HEXIAYUE
- * @LastEditTime: 2023-01-31 10:40:13
+ * @LastEditTime: 2023-02-03 02:16:41
 -->
 <template>
     <div class="hxy-crx-container" :class="{ 'hxy-show': showModal }">
@@ -60,8 +60,9 @@ const palyUrlList = [imgSrc1, imgSrc2];
 
 const audioPlay = ref(null);
 
-// 点击插件图标触发
+// 接受消息
 chrome.runtime.onMessage.addListener(async (msg) => {
+    // 打开扩展弹窗
     if (msg === "toggle") {
         if (showModal.value) {
             close();
@@ -70,16 +71,20 @@ chrome.runtime.onMessage.addListener(async (msg) => {
             // 存在歌曲再打开就不刷新
             if (!musicObj.data.picurl) {
                 const { code, data } = await fetchRequest(musicApiOption);
-                console.log("code", code);
-                console.log("data", data);
                 if (code == 1) {
                     musicObj.data = reactive(data);
                 }
             }
         }
     }
+    // 暂停音乐播放
+    if (msg == "close") {
+        // 暂停其他tab音乐播放
+        await nextTick();
+        isPlay.value = false;
+        audioPlay.value.pause();
+    }
 });
-
 // 打开扩展弹窗
 function open() {
     showModal.value = true;
@@ -94,6 +99,7 @@ function close() {
 
 // 音乐或暂停
 function audioPlayfun() {
+    chrome.runtime.sendMessage("close");
     if (isPlay.value) {
         audioPlay.value.pause();
     } else {

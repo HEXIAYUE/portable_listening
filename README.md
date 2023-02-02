@@ -35,3 +35,8 @@ yarn run build
 2. 展示音频图片，作者名，音频名
 3. 图片展示
    [![V1.1.md.png](https://img.hxyxyz.top/images/2023/01/31/V1.1.md.png)](https://img.hxyxyz.top/image/jsJeb)
+
+### 1.2.0
+
+1.在活动 tab 播放音乐时，暂停之前页面的已播放的音乐,限制只能存在一个播放页面
+
