@@ -15,11 +15,16 @@
 1. 使用基于 vite 构建 Chrome 扩展 的[vite-plugin-crx-mv3](https://github.com/Jervis2049/vite-plugin-crx-mv3)
 2. 音乐接口由[FREE Api](https://www.free-api.com/doc/302)提供
 
+# install
+
+yarn install
+
 # development
 
 yarn run dev
 
 # production
+
 yarn run build
 
 # 版本介绍
